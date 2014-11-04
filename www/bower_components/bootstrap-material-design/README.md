@@ -1,11 +1,14 @@
+[![build status](https://travis-ci.org/FezVrasta/bootstrap-material-design.svg?branch=master)](https://travis-ci.org/FezVrasta/bootstrap-material-design)
+[![ghat status](http://mywebexpression.com:3001/status/initial/badge.png)](http://mywebexpression.com:3001/) (click to chat)
+
 [![banner](demo/imgs/banner.jpg)](#)
 
-This Bootstrap theme is an easy way to use the new Material Design guidelines by Google in your Bootstrap 3 based application.
-Just include the theme right after the Bootstrap CSS and include the javascript at the end of your document, everything will be converted to Material Design (paper) style.
+This Bootstrap theme is an easy way to use the new [Material Design guidelines by Google](http://www.google.com/design/spec/material-design/introduction.html) in your Bootstrap 3 based application.
+Just include the theme, after the Bootstrap CSS and include the javascript at the end of your document (Just before the end of the `<body>` tag), and everything will be converted to Material Design (paper) style.
 
-This theme is in early development and is not ready for production.
+**Note:**This theme is in early development and is not ready for production.
 
-Check out [the demo at this link](http://fezvrasta.github.io/bootstrap-material-design/) (could be not even with the master branch).
+Check out [the demo at this link](http://fezvrasta.github.io/bootstrap-material-design/) (This demo may not be even with the master branch.)
 
 ## How to install
 
@@ -22,8 +25,19 @@ so this might not be true before the first stable release.
 
 ## Getting started
 
-Navigate to the `template/` folder in this repository, and you will see the `index.html` file, which has the CSS include statements, in the `head` section and the JS includes just before `body` section closes.
-You need to copy the `material/` folder to the root of your project, ensuring that all the files in your project can access the files through the relative URL, supplied in the CSS and the JS includes.
+Navigate to the `dist/` folder in this repository, and you will see the `test.html` file, which has the CSS include statements, in the `head` section and the JS includes just before `body` section closes.
+You need to copy the `dist/` folder to the root of your project, ensuring that all the files in your project can access the files through the relative URL, supplied in the CSS and the JS includes.
+
+## Development
+
+We are using grunt to automate the workflow and build process. Ensure you have nodejs installed and grunt-cli installed globally.
+After cloning the repo, run `npm install` to ensure you have all dev dependencies.
+
+Run the `grunt build` command to run the tests and compile the less/sass. See Gruntfile.js for details on targets.
+
+Run the `grunt test` command for browser based jasmine unit tests.
+
+Run the `grunt serve` command to build and fire up a http server with live-reload and a watch for development purposes.
 
 ## Todo
 
@@ -41,8 +55,8 @@ More "todo" things can be found in the ISSUES of this repository.
 
 If you like this project you may support me by donating something on Gittip, starring this repository or reporting bugs and ideas in the issue section.
 
-[![gittip](screenshots/gittip-button.jpg)](https://www.gratipay.com/FezVrasta/)
-[![issues](screenshots/issues-button.jpg)](https://github.com/FezVrasta/bootstrap-material-design/issues)
+[![gittip](demo/imgs/gittip-button.jpg)](https://www.gratipay.com/FezVrasta/)
+[![issues](demo/imgs/issues-button.jpg)](https://github.com/FezVrasta/bootstrap-material-design/issues)
 
 # Contribute
 
@@ -64,7 +78,7 @@ Example:
 
 These colors are taken from the Material Design color palette and are reported below:
 
-![palette](screenshots/palette.jpg)
+![palette](demo/imgs/palette.jpg)
 
 ### Buttons:
 
@@ -96,6 +110,40 @@ The syntax to add a Material icon is:
 
      <i class="icon icon-material-favorite"></i>
 
+# Material.js
+
+Material.js is a jQuery plugin that add some magic to your markup and allows Material Design for Bootstrap to style some elements like inputs, checkboxes, radios etc.
+
+### Functions:
+
+This plugin exposes some functions, them are:
+
+`$.material.init()` is a shortcut to run all the following commands.
+`$.material.ripples()` will apply ripples.js to the default elements.
+`$.material.input()` will enable the MD style to the text inputs, and other kind of inputs (number, email, file etc).
+`$.material.checkbox():` will enable the MD style to the checkboxes (remember to follow the markup guidelines explained in the Inputs chapter.
+`$.material.radio():` will enable the MD style to the checkboxes (remember to follow the markup guidelines explained in the Inputs chapter.
+
+### Apply Material.js only to specific elements:
+
+Every function expects an optional value that will be used as selector for the function, for example
+  `$.material.ripples("#selector, #foobar")` will apply Ripples.js only to `#selector` and `#foobar`.
+The functions that allows an optional selector are `$.material.ripples`, `$.material.input`, `$.material.checkbox` and `$.material.radio`.
+
+You can even override the default values using the `$.material.options` function, the default values are:
+
+    $.material.options = {
+        "withRipples": ".btn:not(.btn-link), .card-image, .navbar a:not(.withoutripple), .nav-tabs a:not(.withoutripple), .withripple",
+        "inputElements": "input.form-control, textarea.form-control, select.form-control",
+        "checkboxElements": ".checkbox > label > input[type=checkbox]",
+        "radioElements": ".radio > label > input[type=radio]"
+    }
+
+### Arrive.js support
+
+If you need to dynamically add elements to your DOM then you may need to include Arrive.js before Material.js, this will automatically apply Material.js to every new element added by you using JS.
+
+
 # Plugins
 
 Material Design for Bootstrap comes with styling support for various external scripts:
@@ -116,7 +164,7 @@ Read more about [noUiSlider here](http://refreshless.com/nouislider/)
 
 ### Selectize.js
 
-Transform select and multi select inputs in advanced text inputs. Material Design for BS provides a fulle replacement of the plugin's CSS, don't include it so.
+Transform select and multi select inputs in advanced text inputs. Material Design for BS provides a full replacement of the plugin's CSS, so don't include it.
 Read more about [selectize.js](http://brianreavis.github.io/selectize.js/)
 
 
