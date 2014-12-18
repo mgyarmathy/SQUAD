@@ -1,0 +1,22 @@
+<h3>Create a Goal</h3>
+<div class="list-group">
+<div class="list-group-separator"></div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+    	<label class="control-label">New Goal:</label>
+	        <div class="input-group">
+	        <input ng-model="X" style="text-align:center; width: 120px; font-weight: 600;" type="text" class="form-control" placeholder="X">
+	        <span class="input-group-addon">for</span>
+	        <input ng-model="forY" style="text-align:center; font-weight: 600;" type="number" class="form-control" placeholder="10">
+	        <span class="input-group-addon" style="width:5px; padding:0;"></span>
+	        <input ng-model="Zs" style="text-align:center; font-weight: 600;" type="text" class="form-control" placeholder="Z">
+	        <span class="input-group-addon">s</span>
+	    </div>
+	</div>
+    <div class="panel-footer">
+    	<p style="font-size:12px"><strong>X for Y Zs</strong><br/>Follow behavior X for Y (number) Zs (unit of time)<br/><em>(e.g. Don't smoke for 10 days)</em></p>
+    </div>
+</div>
+<a ng-href="#/home" class="btn btn-success" ng-click="createGoal()">Create Goal</a>

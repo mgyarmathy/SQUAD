@@ -1,0 +1,65 @@
+<div class="list-group">
+    <div class="list-group-item">
+        <div class="row-action-primary">
+            <i style="font-size: 48px;width: 120px; height: 120px; background-color: {{group.color}};" class="fa fa-{{group.icon}} group-profile-icon"></i>
+        </div>
+        <div class="row-content" style="margin-top: -20px; width: calc(100% - 138px);">
+            <h2>{{group.name}}</h2>
+            <p class="list-group-item-text">{{group.description}}</p>
+        </div>
+    </div>
+</div>
+<div ng-if="!group.added">
+    <button ng-click="addGroup()" class="btn btn-success" style="width: 100%; background-color: {{group.color}};">Join Group</button>
+</div>
+<div ng-if="group.added">
+<h3>Broadcast a Message</h3>
+<div class="list-group">
+	<div class="list-group-separator"></div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading" style="font-size:18px; color: white; background-color: {{group.color}};">Send a message to your group to receive support.</div>
+    <div class="panel-body">
+    	<div class="form-group">
+	    <textarea ng-model="$parent.message" class="form-control" rows="3" style="resize:none" placeholder="Message Content"></textarea>
+		</div>
+		<a href="#/message-sent/{{group.id}}" class="btn btn-success" style="background-color: {{group.color}};" ng-click="sendMessage()">Send</a>
+    </div>
+</div>
+<div class="list-group">
+	<div class="list-group-separator"></div>
+</div>
+</div>
+
+<div ng-if="group.resources.length > 0">
+<h3>Group Resources</h3>
+<div class="list-group">
+	<div class="list-group-separator"></div>
+</div>
+<div class="panel panel-default" ng-repeat="resource in group.resources">
+    <div class="panel-body">
+        <a ng-href="{{resource.url}}">{{resource.name}}</a>
+    </div>
+</div>
+<div class="list-group">
+	<div class="list-group-separator"></div>
+</div>
+</div>
+<h3>Group Members</h3>
+<div class="list-group">
+<div class="list-group-separator"></div>
+<div ng-repeat="user in members()">
+    <a href="#/user/{{user.id}}">
+    <div class="list-group-item">
+        <div class="row-picture">
+            <img ng-src="{{user.avatar}}"/>
+        </div>
+        <div class="row-content" style="min-height: 60px; width: calc(100% - 138px);">
+            <h4 class="list-group-item-heading">{{user.name}}</h4>
+            <!-- <p class="list-group-item-text">{{user.bio}}</p> -->
+        </div>
+    </div>
+    </a>
+    <div class="list-group-separator"></div>
+</div>
+

@@ -1,0 +1,93 @@
+<div class="list-group">
+    <div class="list-group-item">
+        <div class="row-picture">
+            <img style="width:120px;height:120px" ng-src="{{users[0].avatar}}"/>
+        </div>
+        <div class="row-content" style="margin-top: -20px; width: calc(100% - 138px);">
+            <h2>{{users[0].name}}</h2>
+            <p class="list-group-item-text">{{users[0].bio}}</p>
+        </div>
+    </div>
+</div>
+<h3>Your Groups</h3>
+<div class="list-group" ng-if="groups.length == 0">
+    <div class="list-group-separator"></div>
+    <a href="#/add-group">
+    <div class="list-group-item">
+        <div class="row-action-primary">
+            <i class="fa fa-exclamation"></i>
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">You haven't joined any groups!</h4>
+            <p class="list-group-item-text"><i>Click here to join one.</i></p> 
+        </div>
+    </div>
+    </a>
+    <div class="list-group-separator"></div>
+</div>
+<div class="list-group" ng-if="groups.length > 0">
+<div class="list-group-item" style="margin-top:-28px;">
+    <div class="row-content" style="min-height:inherit;">
+        <div class="least-content"><a href="#/add-group">Add/Remove Groups</a></div>
+    </div>
+</div>
+<div class="list-group-separator"></div>
+<div ng-repeat="group in groups">
+    <a href="#/group/{{group.id}}">
+    <div class="list-group-item">
+        <div class="row-action-primary">
+            <i style="background-color: {{group.color}};" class="fa fa-{{group.icon}}"></i>
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">{{group.name}}</h4>
+            <p class="list-group-item-text">"{{group.description}}"</p> 
+        </div>
+    </div>
+    </a>
+    <div class="list-group-separator"></div>
+</div>
+</div>
+<h3 style="display:">Your Goals</h3>
+<div class="list-group">
+    <div ng-if="goals.length > 0" class="list-group-item" style="margin-top:-28px;">
+        <div class="row-content" style="min-height:inherit;">
+            <div class="least-content"><a href="#/create-goal">Create Goal</a></div>
+        </div>
+    </div>
+    <div class="list-group-separator"></div>
+</div>
+<div class="list-group" ng-if="goals.length == 0">
+    <a href="#/create-goal">
+    <div class="list-group-item">
+        <div class="row-action-primary">
+            <i class="fa fa-exclamation"></i>
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">You don't have any goals!</h4>
+            <p class="list-group-item-text"><i>Click here to create one.</i></p> 
+        </div>
+    </div>
+    </a>
+    <div class="list-group-separator"></div>
+</div>
+<div class="list-group" ng-if="goals.length > 0">
+<span ng-repeat="goal in goals">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="font-size:18px; color: white; background-color: #0f9d58;">{{goal.name}}</div>
+        <div class="panel-body">
+            <h5>Progress:</h5>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: {{goal.progressPercent()}}%"></div>
+            </div>
+            <div style="text-align: center;">
+            <div ng-repeat="x in goal.progress track by $index" class="checkbox" style="display:inline-block; width: 25%;">
+                <label>
+                    <input type="checkbox" ng-model="x.val" ng-checked="{{x.val}}"><span class="ripple"></span><span class="check"></span>
+                    <div style="position: relative; left: -10px; top: 10px; margin-bottom: 12px;">{{goal.unit}} {{$index + 1}}</div>
+                </label>
+            </div>
+            </div>
+        </div>
+    </div>
+</span>
+</div>

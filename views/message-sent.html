@@ -1,0 +1,23 @@
+<div style="text-align: center;">
+<h2>Message Sent!</h2>
+<p>Someone should be getting back to you shortly.</p>
+<i style="display:block; font-size:84px; margin: 20px 0;"class="fa fa-smile-o"></i>
+
+<div ng-if="group.resources.length > 0">
+<p>In the meantime, check out some of these helpful resources...</p>
+<div class="list-group">
+	<div class="list-group-separator"></div>
+</div>
+<div class="panel panel-default" ng-repeat="resource in group.resources">
+    <div class="panel-body">
+        <a ng-href="{{resource.url}}">{{resource.name}}</a>
+    </div>
+</div>
+<div class="list-group">
+	<div class="list-group-separator"></div>
+</div>
+</div>
+
+<a href="#/" class="btn btn-primary">Continue</a>
+
+</div>

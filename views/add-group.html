@@ -1,0 +1,24 @@
+<h3>Add/Remove Groups</h3>
+<div class="list-group">
+<div class="list-group-separator"></div>
+<div ng-repeat="group in groups">
+    <div class="add-group-button checkbox">
+        <label>
+            <input type="checkbox" ng-model="group.added" ng-checked="{{group.added}}"><span class="ripple"></span><span class="check"></span>
+        </label>
+    </div>
+    <a href="#/group/{{group.id}}">
+    <div class="list-group-item">
+        <div class="row-action-primary">
+            <i style="background-color: {{group.color}};" class="fa fa-{{group.icon}}"></i>
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">{{group.name}}</h4>
+            <p class="list-group-item-text">"{{group.description}}"</p>
+        </div>
+    </div>
+    </a>
+    
+    <div class="list-group-separator"></div>
+</div>
+</div>
